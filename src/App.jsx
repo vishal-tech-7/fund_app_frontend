@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPages';
 import RegisterPage from './pages/RegisterPage';
 import { useAuth } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
 
 function App() {
   const { authToken } = useAuth(); // Access authToken from AuthContext
@@ -13,23 +14,23 @@ function App() {
       <div className="flex flex-col">
         <div className="flex-1">
           <Routes>
-            {/* If logged in, show Dashboard; else redirect to Login */}
-            <Route
-              path="/"
-              element={authToken ? <Dashboard /> : <Navigate to="/login" />}
-            />
+            {/* 🔒 Protected Dashboard Route */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
 
-            {/* If not logged in, show Login; else redirect to Dashboard */}
+            {/* 🔑 Public Routes (Redirect to Dashboard if already logged in) */}
             <Route
               path="/login"
-              element={authToken ? <Navigate to="/" /> : <LoginPage />}
+              element={authToken ? <Navigate to="/dashboard" replace /> : <LoginPage />}
             />
-
-            {/* If not logged in, show Register; else redirect to Dashboard */}
             <Route
               path="/register"
-              element={authToken ? <Navigate to="/" /> : <RegisterPage />}
+              element={authToken ? <Navigate to="/dashboard" replace /> : <RegisterPage />}
             />
+
+            {/* Redirect to dashboard if logged in, else to login */}
+            <Route path="/" element={<Navigate to={authToken ? "/dashboard" : "/login"} replace />} />
           </Routes>
         </div>
       </div>

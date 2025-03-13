@@ -14,14 +14,22 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError(''); // Clear previous errors
 
     try {
-      await axios.post('https://fund-app-backend-2r8l.onrender.com/auth/register', { username, email, password });
+      const response = await axios.post('https://fund-app-backend-2r8l.onrender.com/api/auth/register', {
+        username,
+        email,
+        password,
+      });
 
+      // Store token and navigate to dashboard
+      localStorage.setItem('token', response.data.token);
       alert('Registration successful!');
-      navigate('/login'); 
+      navigate('/dashboard'); 
     } catch (err) {
-      setError('Error registering user');
+      console.error('Registration Error:', err.response?.data || err.message);
+      setError(err.response?.data?.message || 'Error registering user');
     }
   };
 
@@ -39,6 +47,7 @@ const RegisterPage = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full"
+              required
             />
             <Input
               type="email"
@@ -46,6 +55,7 @@ const RegisterPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full"
+              required
             />
             <Input
               type="password"
@@ -53,6 +63,8 @@ const RegisterPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full"
+              required
+              minLength="6"
             />
             <Button type="submit" className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
               Register
