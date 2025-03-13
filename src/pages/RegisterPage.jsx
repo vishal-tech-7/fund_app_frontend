@@ -16,7 +16,7 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      await axios.post('https://fund-app-backend-2r8l.onrender.com/auth/register', { username, email, password });
 
       alert('Registration successful!');
       navigate('/login'); 

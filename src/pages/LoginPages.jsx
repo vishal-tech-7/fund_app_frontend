@@ -17,7 +17,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const response = await axios.post('https://fund-app-backend-2r8l.onrender.com/api/auth/login', { email, password });
 
       const token = response.data.token; 
 
