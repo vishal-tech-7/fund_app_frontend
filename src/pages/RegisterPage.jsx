@@ -10,11 +10,26 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setError('');
+    setLoading(true); // Start loading
+
+    // Basic frontend validation
+    if (!username || !email || !password) {
+      setError('All fields are required');
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await axios.post('https://fund-app-backend-2r8l.onrender.com/api/auth/register', {
@@ -30,6 +45,8 @@ const RegisterPage = () => {
     } catch (err) {
       console.error('Registration Error:', err.response?.data || err.message);
       setError(err.response?.data?.message || 'Error registering user');
+    } finally {
+      setLoading(false); // Stop loading after request completes
     }
   };
 
@@ -66,8 +83,12 @@ const RegisterPage = () => {
               required
               minLength="6"
             />
-            <Button type="submit" className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
-              Register
+            <Button 
+              type="submit" 
+              className={`w-full mt-4 text-white ${loading ? 'bg-gray-500' : 'bg-blue-600 hover:bg-blue-700'}`} 
+              disabled={loading}
+            >
+              {loading ? "Registering..." : "Register"}
             </Button>
           </form>
           <p className="mt-4 text-center text-sm">

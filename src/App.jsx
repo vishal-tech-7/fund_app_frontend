@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPages';
 import RegisterPage from './pages/RegisterPage';
 import { useAuth } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
+import ProtectedRoute from './components/ProtectedRoute';// Import ProtectedRoute
 
 function App() {
   const { authToken } = useAuth(); // Access authToken from AuthContext
