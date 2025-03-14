@@ -27,7 +27,7 @@ const Dashboard = () => {
     );
 
     return (
-        <div className="flex w-full min-h-screen bg-gray-100">
+        <div className="flex w-full min-h-screen bg-gray-100 fixed inset-0">
             {/* Sidebar */}
             <Sidebar isCollapsed={!isSidebarVisible} toggleSidebar={toggleSidebar} />
             {/* Main Content Area */}
