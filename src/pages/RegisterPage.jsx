@@ -16,9 +16,8 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true); // Start loading
-
-    // Basic frontend validation
+    setLoading(true); 
+    
     if (!username || !email || !password) {
       setError('All fields are required');
       setLoading(false);
@@ -38,7 +37,7 @@ const RegisterPage = () => {
         password,
       });
 
-      // Store token and navigate to dashboard
+     
       localStorage.setItem('token', response.data.token);
       alert('Registration successful!');
       navigate('/dashboard'); 
@@ -46,7 +45,7 @@ const RegisterPage = () => {
       console.error('Registration Error:', err.response?.data || err.message);
       setError(err.response?.data?.message || 'Error registering user');
     } finally {
-      setLoading(false); // Stop loading after request completes
+      setLoading(false); 
     }
   };
 

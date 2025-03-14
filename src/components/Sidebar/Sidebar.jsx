@@ -38,7 +38,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         isCollapsed ? 'w-16' : 'w-64'
       }`}
     >
-      {/* Toggle Button */}
+      
       <button
         onClick={toggleSidebar}
         className="mb-6 p-2 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none"
@@ -46,7 +46,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         {isCollapsed ? '>' : '<'}
       </button>
 
-      {/* Top Section */}
+      
       <div className="flex items-center space-x-2 mb-6">
         <div className="h-6 w-6 rounded-full bg-gray-800"></div>
         {!isCollapsed && (
@@ -56,7 +56,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         )}
       </div>
 
-      {/* Main Navigation Items */}
+      
       <div className="flex-1 overflow-y-auto space-y-1">
         <SidebarItem
           icon={<LayoutDashboard className="w-5 h-5" />}
@@ -106,7 +106,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         />
       </div>
 
-      {/* Footer Items */}
+      
       <div className="pt-4 border-t border-gray-200 space-y-1">
         <SidebarItem
           icon={<PiggyBank className="w-5 h-5" />}

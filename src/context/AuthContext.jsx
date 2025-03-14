@@ -6,7 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [authToken, setAuthToken] = useState(localStorage.getItem("token") || null);
 
   useEffect(() => {
-    localStorage.setItem("token", authToken); // Sync token with localStorage
+    localStorage.setItem("token", authToken);
   }, [authToken]);
 
   const login = (token) => {

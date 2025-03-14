@@ -27,14 +27,14 @@ const Dashboard = () => {
     );
 
     return (
-        <div className="flex w-full min-h-screen bg-gray-100 fixed inset-0">
-            {/* Sidebar */}
+        <div className="flex w-full min-h-screen bg-gray-100 fixed ">
+            
             <Sidebar isCollapsed={!isSidebarVisible} toggleSidebar={toggleSidebar} />
-            {/* Main Content Area */}
+            
             <div className="flex-1 flex flex-col transition-all duration-300">
                 <Topbar />
                 <div className="flex-1 p-4 sm:p-6 lg:p-8">
-                    {/* Custom Tabs */}
+                    
                     <div className="mb-8">
                         <div className="flex bg-white rounded-md shadow-sm overflow-hidden">
                             <button
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6 mt-8">
-                                {/* Active Companies */}
+                                
                                 <Card className="flex flex-col">
                                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                                         <CardTitle className="text-base font-medium text-gray-700">
@@ -81,7 +81,7 @@ const Dashboard = () => {
                                             $1,681,662.63
                                         </div>
                                         <div className="relative flex justify-center flex-1 min-h-28">
-                                            {/* Tri-color donut chart */}
+                                            
                                             <svg className="h-28 w-28 md:h-36 md:w-36" viewBox="0 0 36 36">
                                                 <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#004d71" strokeWidth="3" strokeDasharray="30 100" strokeDashoffset="25"></circle>
                                                 <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#3aacb8" strokeWidth="3" strokeDasharray="35 100" strokeDashoffset="55"></circle>
@@ -97,7 +97,7 @@ const Dashboard = () => {
                                     </CardContent>
                                 </Card>
 
-                                {/* Active Portfolio */}
+                                
                                 <Card className="flex flex-col">
                                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                                         <CardTitle className="text-base font-medium text-gray-700">

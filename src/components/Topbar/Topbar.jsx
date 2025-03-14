@@ -39,11 +39,11 @@ const Topbar = () => {
       <div className="flex items-center space-x-4">
         <Bell className="h-5 w-5 text-gray-500" />
 
-        {/* Dropdown Wrapper */}
+        
         <div className="flex items-center space-x-2 relative" ref={dropdownRef}>
           <div className="text-sm text-gray-700">Edward Hudson</div>
 
-          {/* Replace gray circle with a User icon */}
+          
           <div
             className="cursor-pointer"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -51,7 +51,7 @@ const Topbar = () => {
             <User className="h-8 w-8 text-gray-500" />
           </div>
 
-          {/* Dropdown Menu */}
+          
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
               <div className="py-2">
